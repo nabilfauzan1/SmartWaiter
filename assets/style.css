@@ -1,0 +1,598 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   SmartWaiter — Sorain Kitchen  |  Centralized Design System
+   Brand: primary #B22222 · secondary #FFF8F0 · accent #D4AF37 · charcoal #2A1B1B
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ──────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+    --primary:        #B22222;
+    --primary-dark:   #8B0000;
+    --primary-light:  #fce8e8;
+    --secondary:      #FFF8F0;
+    --accent:         #D4AF37;
+    --accent-dark:    #B8960F;
+    --charcoal:       #2A1B1B;
+    --warm-gray:      #6B5B5B;
+    --border-warm:    #E8D5C4;
+    --card-bg:        #FFFFFF;
+    --card-radius:    16px;
+    --pill-radius:    24px;
+    --shadow-sm:      0 2px 8px rgba(42,27,27,0.08);
+    --shadow-md:      0 4px 18px rgba(42,27,27,0.12);
+    --shadow-lg:      0 8px 32px rgba(42,27,27,0.16);
+    --transition:     all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-display:   'Cormorant Garamond', Georgia, serif;
+    --font-body:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ── Base Reset ─────────────────────────────────────────────────────────────── */
+html, body, [class*="css"] {
+    font-family: var(--font-body) !important;
+    color: var(--charcoal);
+}
+
+/* ── Main Background — Washi Paper Effect ─────────────────────────────────────────── */
+/* Using a layered background on stAppViewContainer: radial gradient + SVG dot grid */
+[data-testid="stAppViewContainer"] {
+    background-color: #fff6ec !important;
+    background-image:
+        radial-gradient(ellipse at 60% 0%, rgba(255,246,236,1) 0%, rgba(255,240,227,0.85) 40%, rgba(253,232,214,0.7) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='1' cy='1' r='1' fill='rgba(178%2C34%2C34%2C0.045)'/%3E%3C/svg%3E") !important;
+    background-size: cover, 28px 28px !important;
+    background-attachment: fixed, fixed !important;
+    min-height: 100vh !important;
+}
+
+/* Also tint the .main wrapper for good measure */
+.main {
+    background: transparent !important;
+}
+
+.block-container {
+    padding-top: 1.5rem !important;
+    /* 9rem bottom padding ensures quick prompts are never hidden behind
+       the sticky st.chat_input bar (~80px tall) */
+    padding-bottom: 9rem !important;
+    max-width: 920px !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+h1 {
+    font-family: var(--font-display) !important;
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.15 !important;
+}
+h2 {
+    font-family: var(--font-display) !important;
+    color: var(--primary) !important;
+    font-weight: 600 !important;
+}
+h3 {
+    color: var(--primary-dark) !important;
+    font-weight: 600 !important;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(175deg, #1a0505 0%, #2d0f0f 50%, #3a1010 100%) !important;
+    border-right: 2px solid rgba(178,34,34,0.6) !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.25) !important;
+}
+
+[data-testid="stSidebar"] > div {
+    padding-top: 1rem;
+}
+
+[data-testid="stSidebar"] * {
+    color: #FFF8F0 !important;
+}
+
+[data-testid="stSidebar"] .stMarkdown p,
+[data-testid="stSidebar"] .stMarkdown li,
+[data-testid="stSidebar"] .stCaption,
+[data-testid="stSidebar"] small {
+    color: rgba(255,248,240,0.80) !important;
+    font-size: 0.88rem !important;
+}
+
+[data-testid="stSidebar"] .stMarkdown strong {
+    color: #FFF8F0 !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stSidebar"] hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent) !important;
+    margin: 0.75rem 0 !important;
+}
+
+/* Sidebar logo card */
+.sidebar-logo-card {
+    background: rgba(255,248,240,0.06);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: var(--card-radius);
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+[data-testid="stSidebar"] [data-testid="stImage"] img {
+    border-radius: 12px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+
+/* ── Sidebar Buttons ────────────────────────────────────────────────────────── */
+/* New Chat button — accent gold CTA */
+[data-testid="stSidebar"] .stButton > button {
+    background: linear-gradient(135deg, #D4AF37, #B8960F) !important;
+    color: #1a0505 !important;
+    border: none !important;
+    border-radius: var(--pill-radius) !important;
+    font-weight: 700 !important;
+    font-size: 0.92rem !important;
+    width: 100% !important;
+    padding: 0.6rem 1.25rem !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 3px 12px rgba(212,175,55,0.35) !important;
+    transition: var(--transition) !important;
+    cursor: pointer !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: linear-gradient(135deg, #e0be3e, #c9a418) !important;
+    box-shadow: 0 6px 20px rgba(212,175,55,0.5) !important;
+    transform: translateY(-1px) !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* Sidebar Filter buttons (Menu page) */
+[data-testid="stSidebar"] [data-testid="baseButton-secondary"] {
+    background: rgba(212,175,55,0.15) !important;
+    color: #FFF8F0 !important;
+    border: 1px solid rgba(212,175,55,0.4) !important;
+    border-radius: var(--card-radius) !important;
+    transition: var(--transition) !important;
+}
+[data-testid="stSidebar"] [data-testid="baseButton-secondary"]:hover {
+    background: rgba(212,175,55,0.28) !important;
+}
+
+/* ── Sidebar selectbox, slider, checkbox ────────────────────────────────────── */
+[data-testid="stSidebar"] .stSelectbox label,
+[data-testid="stSidebar"] .stSlider label,
+[data-testid="stSidebar"] .stCheckbox label {
+    color: rgba(255,248,240,0.88) !important;
+    font-size: 0.87rem !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stSelectbox"] > div > div {
+    background: rgba(255,248,240,0.08) !important;
+    border-color: rgba(212,175,55,0.3) !important;
+    color: #FFF8F0 !important;
+    border-radius: 10px !important;
+}
+
+/* ── Status Badges ──────────────────────────────────────────────────────────── */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: var(--pill-radius);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+.status-online  { background: rgba(34,139,34,0.15); color: #22543d; border: 1px solid rgba(34,139,34,0.3); }
+.status-offline { background: rgba(178,34,34,0.15); color: #9B1C1C; border: 1px solid rgba(178,34,34,0.3); }
+
+/* ── Preference Tags ────────────────────────────────────────────────────────── */
+.pref-tag {
+    background: rgba(212,175,55,0.18);
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 10px;
+    padding: 2px 9px;
+    font-size: 0.74rem;
+    color: #FFF8F0;
+    display: inline-block;
+    margin: 2px;
+    font-weight: 500;
+}
+
+/* ── Gradient Divider ───────────────────────────────────────────────────────── */
+.restaurant-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #B22222 20%, #D4AF37 50%, #B22222 80%, transparent);
+    margin: 1rem 0;
+    border-radius: 2px;
+}
+
+/* ── Hero Section (empty chat state) ───────────────────────────────────────── */
+.hero-section {
+    text-align: center;
+    padding: 2.5rem 1rem 2rem;
+    animation: heroFadeIn 0.8s ease-out forwards;
+}
+
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-logo-wrap {
+    margin: 0 auto 1.5rem;
+    max-width: 160px;
+    filter: drop-shadow(0 4px 16px rgba(178,34,34,0.18));
+}
+
+.hero-headline {
+    font-family: var(--font-display) !important;
+    font-size: 2.8rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 0.6rem !important;
+}
+
+.hero-sub {
+    font-size: 1.08rem !important;
+    color: var(--warm-gray) !important;
+    font-weight: 400 !important;
+    margin: 0 auto 2rem !important;
+    max-width: 520px !important;
+    line-height: 1.6 !important;
+}
+
+.hero-badges {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.hero-badge {
+    background: rgba(178,34,34,0.07);
+    border: 1px solid rgba(178,34,34,0.18);
+    border-radius: var(--pill-radius);
+    padding: 5px 14px;
+    font-size: 0.82rem;
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+/* ── Chat Messages ──────────────────────────────────────────────────────────── */
+
+/* General chat message container */
+[data-testid="stChatMessage"] {
+    border-radius: var(--card-radius) !important;
+    margin-bottom: 0.75rem !important;
+    padding: 1rem 1.25rem !important;
+    animation: msgSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes msgSlideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Sora (assistant) bubble */
+[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]),
+.sora-bubble {
+    background: linear-gradient(135deg, #ffffff 0%, #fffaf4 100%) !important;
+    border: 1px solid var(--border-warm) !important;
+    border-left: 4px solid var(--accent) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* User bubble */
+[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]),
+.user-bubble {
+    background: linear-gradient(135deg, #fce8e8 0%, #f9d8d8 100%) !important;
+    border: 1px solid rgba(178,34,34,0.2) !important;
+    border-right: 4px solid var(--primary) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* Chat message text */
+[data-testid="stChatMessage"] p {
+    color: var(--charcoal) !important;
+    line-height: 1.7 !important;
+    font-size: 0.97rem !important;
+}
+
+/* ── Quick Prompts ──────────────────────────────────────────────────────────── */
+
+/* Section label */
+.quick-prompts-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--warm-gray);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* Quick prompt buttons inside st.columns — fix wrap bug */
+div[data-testid="column"] .stButton > button {
+    background: var(--card-bg) !important;
+    color: var(--primary) !important;
+    border: 1.5px solid rgba(178,34,34,0.3) !important;
+    border-radius: var(--pill-radius) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    padding: 0.42rem 0.9rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    transition: var(--transition) !important;
+    box-shadow: var(--shadow-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    cursor: pointer !important;
+}
+
+div[data-testid="column"] .stButton > button:hover {
+    background: var(--primary) !important;
+    color: white !important;
+    border-color: var(--primary) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px) !important;
+}
+
+div[data-testid="column"] .stButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* ── Chat Input ─────────────────────────────────────────────────────────────── */
+
+/* Outer container */
+[data-testid="stChatInput"] {
+    border-radius: var(--pill-radius) !important;
+    border: 2px solid var(--accent) !important;
+    background: white !important;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.18) !important;
+    transition: var(--transition) !important;
+}
+
+[data-testid="stChatInput"]:focus-within {
+    border-color: var(--primary) !important;
+    box-shadow: 0 4px 24px rgba(178,34,34,0.18) !important;
+}
+
+[data-testid="stChatInputTextArea"] {
+    border-radius: var(--pill-radius) !important;
+    border: none !important;
+    background: transparent !important;
+    font-size: 1rem !important;
+    color: var(--charcoal) !important;
+    padding: 0.75rem 1.25rem !important;
+    line-height: 1.5 !important;
+}
+
+[data-testid="stChatInputTextArea"]::placeholder {
+    color: rgba(107,91,91,0.55) !important;
+    font-style: italic !important;
+}
+
+/* Send button */
+[data-testid="stChatInputSubmitButton"] button {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+    border-radius: 50% !important;
+    width: 38px !important;
+    height: 38px !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 2px 8px rgba(178,34,34,0.3) !important;
+    transition: var(--transition) !important;
+    margin: 4px !important;
+}
+
+[data-testid="stChatInputSubmitButton"] button:hover {
+    box-shadow: 0 4px 16px rgba(178,34,34,0.45) !important;
+    transform: scale(1.08) !important;
+}
+
+/* ── Cards — Menu Card ──────────────────────────────────────────────────────── */
+.menu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--card-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.8rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.menu-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: rgba(178,34,34,0.2);
+}
+
+.price-tag {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+/* ── Cards — Info Card ──────────────────────────────────────────────────────── */
+.info-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-warm);
+    border-radius: var(--card-radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.info-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Hours table row */
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(232,213,196,0.6);
+    font-size: 0.92rem;
+}
+
+.hours-row:last-child { border-bottom: none; }
+.day-label { font-weight: 600; color: var(--warm-gray); min-width: 110px; }
+
+/* ── Badges ─────────────────────────────────────────────────────────────────── */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.73rem;
+    font-weight: 600;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.badge-halal   { background: rgba(34,139,34,0.12);  color: #186128; border: 1px solid rgba(34,139,34,0.25); }
+.badge-veg     { background: rgba(14,160,100,0.1);  color: #0c5460; border: 1px solid rgba(14,160,100,0.25); }
+.badge-chef    { background: rgba(212,175,55,0.15); color: #856404; border: 1px solid rgba(212,175,55,0.35); }
+.badge-unavail { background: rgba(178,34,34,0.1);   color: #9B1C1C; border: 1px solid rgba(178,34,34,0.25); }
+.badge-avail   { background: rgba(34,139,34,0.1);   color: #186128; border: 1px solid rgba(34,139,34,0.2); }
+
+/* Tech badges (About page) */
+.tech-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border-radius: 14px;
+    padding: 5px 14px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    margin: 3px;
+    box-shadow: 0 2px 6px rgba(178,34,34,0.2);
+    transition: var(--transition);
+}
+
+.tech-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(178,34,34,0.3);
+}
+
+/* ── Page Header Component (used in pages/*.py) ───────────────────────── */
+.page-header {
+    text-align: center;
+    padding: 1.5rem 1rem 0.5rem;
+    animation: heroFadeIn 0.6s ease-out forwards;
+}
+
+.page-header-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.4rem;
+    line-height: 1;
+}
+
+.page-header h1 {
+    font-family: var(--font-display) !important;
+    font-size: 2.4rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin: 0 0 0.3rem !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.page-header .page-subtitle {
+    font-size: 1rem;
+    color: var(--warm-gray);
+    font-weight: 400;
+    margin: 0 0 1rem;
+    font-style: italic;
+}
+
+/* ── Streamlit native elements ──────────────────────────────────────────────── */
+
+/* Warning / Info / Error */
+[data-testid="stAlert"] {
+    border-radius: var(--card-radius) !important;
+    border-left-width: 4px !important;
+}
+
+/* Spinner */
+[data-testid="stSpinner"] {
+    color: var(--primary) !important;
+}
+
+/* Page header (stPageHeader) */
+[data-testid="stPageHeader"] {
+    display: none;
+}
+
+/* Streamlit top app bar */
+header[data-testid="stHeader"] {
+    background: rgba(255,248,240,0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    border-bottom: 1px solid var(--border-warm) !important;
+}
+
+/* Hide deploy button */
+[data-testid="stToolbar"] {
+    right: 2rem !important;
+}
+
+/* Streamlit sidebar nav labels */
+[data-testid="stSidebarNav"] a span {
+    color: rgba(255,248,240,0.85) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    transition: var(--transition) !important;
+}
+
+[data-testid="stSidebarNav"] a:hover span {
+    color: var(--accent) !important;
+}
+
+[data-testid="stSidebarNav"] a[aria-selected="true"] span {
+    color: var(--accent) !important;
+    font-weight: 700 !important;
+}
+
+[data-testid="stSidebarNav"] li {
+    border-radius: 10px !important;
+    transition: var(--transition) !important;
+}
+
+[data-testid="stSidebarNav"] li:hover {
+    background: rgba(212,175,55,0.12) !important;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────────── */
+footer { display: none !important; }
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(178,34,34,0.25); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(178,34,34,0.45); }

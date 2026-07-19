@@ -1,0 +1,53 @@
+menu_id,menu_name,category,description,price,calories,protein,carbs,fat,spicy_level,halal,vegetarian,contains,recommended_for,chef_recommendation,availability
+M001,Signature Shoyu Ramen,Ramen,Soy sauce broth with chicken chashu and ajitama egg,58000,620,32,68,18,1,Yes,No,Wheat|Egg|Soy,First Time Visitor,Yes,Available
+M002,Tonkotsu Ramen,Ramen,Rich pork-style creamy broth using halal ingredients,62000,710,35,70,25,1,Yes,No,Wheat|Egg|Soy,Creamy Broth Lovers,Yes,Available
+M003,Spicy Miso Ramen,Ramen,Miso broth with spicy chili paste,61000,690,33,69,22,4,Yes,No,Wheat|Egg|Soy,Spicy Lovers,Yes,Available
+M004,Black Garlic Ramen,Ramen,Roasted garlic oil ramen with chicken chashu,64000,700,34,68,24,2,Yes,No,Wheat|Egg|Soy,Chef Recommendation,Yes,Available
+M005,Curry Ramen,Ramen,Japanese curry broth ramen,60000,730,31,76,21,2,Yes,No,Wheat|Egg|Milk,Comfort Food,No,Available
+M006,Seafood Ramen,Ramen,Chicken broth ramen with shrimp and squid,68000,660,36,64,19,2,Yes,No,Shellfish|Wheat|Egg,Seafood Lovers,Yes,Available
+M007,Chicken Paitan Ramen,Ramen,Creamy chicken broth ramen,63000,680,35,67,22,1,Yes,No,Wheat|Egg,Rich Flavor Lovers,No,Available
+M008,Vegetarian Ramen,Ramen,Vegetable broth ramen with tofu and mushrooms,56000,490,18,72,12,1,Yes,Yes,Soy|Wheat,Vegetarian,Yes,Available
+M009,Gyudon,Donburi,Sliced beef over steamed rice,62000,720,34,82,19,1,Yes,No,Soy|Sesame,Beef Lovers,Yes,Available
+M010,Chicken Teriyaki Don,Donburi,Grilled chicken with teriyaki sauce,58000,680,33,78,17,1,Yes,No,Soy,Popular Choice,No,Available
+M011,Katsudon,Donburi,Breaded chicken cutlet with egg over rice,61000,760,35,84,24,1,Yes,No,Wheat|Egg,Hearty Meal,Yes,Available
+M012,Salmon Don,Donburi,Grilled salmon over Japanese rice,70000,640,38,62,21,1,Yes,No,Fish,Healthy Choice,Yes,Available
+M013,Unagi Don,Donburi,Grilled eel with sweet soy glaze,85000,690,36,68,23,1,Yes,No,Fish,Premium Meal,Yes,Available
+M014,Chicken Katsu Curry,Donburi,Chicken katsu served with Japanese curry rice,67000,810,36,91,25,2,Yes,No,Wheat|Egg|Milk,Curry Lovers,No,Available
+M015,Salmon Nigiri,Sushi,Fresh salmon over sushi rice,42000,280,18,30,9,0,Yes,No,Fish,Light Meal,Yes,Available
+M016,Tuna Nigiri,Sushi,Fresh tuna over sushi rice,43000,260,19,29,6,0,Yes,No,Fish,Sushi Lovers,No,Available
+M017,Tamago Nigiri,Sushi,Sweet Japanese omelette sushi,32000,240,10,32,8,0,Yes,Yes,Egg,Kids,No,Available
+M018,California Roll,Sushi,Crab stick avocado cucumber roll,52000,430,16,52,15,0,Yes,No,Shellfish|Egg,Beginner Sushi,Yes,Available
+M019,Dragon Roll,Sushi,Eel avocado cucumber special roll,68000,520,22,58,18,0,Yes,No,Fish|Sesame,Premium Sushi,Yes,Available
+M020,Ebi Tempura Roll,Sushi,Shrimp tempura sushi roll,56000,470,19,55,17,0,Yes,No,Shellfish|Egg|Wheat,Popular Choice,No,Available
+M021,Salmon Maki,Sushi,Classic salmon maki roll,40000,310,17,34,8,0,Yes,No,Fish,Healthy Choice,No,Available
+M022,Avocado Roll,Sushi,Vegetarian avocado sushi roll,38000,290,6,38,9,0,Yes,Yes,None,Vegetarian,No,Available
+M023,Premium Wagyu Set,Yakiniku,Premium wagyu slices for grilling,180000,850,48,15,58,0,Yes,No,None,Special Occasion,Yes,Available
+M024,Beef Short Plate,Yakiniku,Marinated beef slices,98000,690,41,12,46,0,Yes,No,Soy,Beef Lovers,Yes,Available
+M025,Chicken Yakiniku,Yakiniku,Grilled marinated chicken,72000,610,39,11,32,0,Yes,No,Soy,Family Favorite,No,Available
+M026,Seafood Grill,Yakiniku,Shrimp squid and salmon grill set,120000,590,42,10,28,0,Yes,No,Shellfish|Fish,Seafood Lovers,No,Available
+M027,Mixed Grill,Yakiniku,Combination of beef chicken and seafood,145000,780,49,14,49,0,Yes,No,Shellfish|Fish|Soy,Sharing Menu,Yes,Available
+M028,Lamb Yakiniku,Yakiniku,Marinated lamb slices,99000,720,44,9,48,0,Yes,No,None,Lamb Lovers,No,Available
+M029,Chicken Karaage,Side Dish,Japanese fried chicken,38000,420,24,22,21,0,Yes,No,Wheat,Best Seller,Yes,Available
+M030,Gyoza,Side Dish,Pan fried chicken dumplings,36000,340,14,28,15,0,Yes,No,Wheat|Soy,Sharing,No,Available
+M031,Takoyaki,Side Dish,Octopus balls with bonito flakes,35000,330,11,36,14,0,Yes,No,Wheat|Fish,Popular Snack,No,Available
+M032,Ebi Tempura,Side Dish,Crispy fried shrimp,45000,390,21,26,18,0,Yes,No,Shellfish|Wheat,Seafood Lovers,Yes,Available
+M033,Agedashi Tofu,Side Dish,Fried tofu in savory broth,32000,270,12,18,14,0,Yes,Yes,Soy,Vegetarian,No,Available
+M034,Edamame,Side Dish,Boiled young soybeans,22000,180,12,15,7,0,Yes,Yes,Soy,Healthy Snack,No,Available
+M035,Japanese Fries,Side Dish,Crispy fries with seaweed seasoning,28000,350,5,45,14,0,Yes,Yes,None,Kids,No,Available
+M036,Yakitori,Side Dish,Chicken skewers with tare sauce,42000,310,27,8,15,0,Yes,No,Soy,Protein Lovers,Yes,Available
+M037,Matcha Cheesecake,Dessert,Creamy cheesecake with matcha flavor,36000,410,8,40,22,0,Yes,Yes,Milk|Egg,Dessert Lovers,Yes,Available
+M038,Mochi Ice Cream,Dessert,Soft mochi filled with ice cream,32000,290,5,38,9,0,Yes,Yes,Milk,Kids,No,Available
+M039,Dorayaki,Dessert,Japanese pancake with red bean filling,30000,330,6,52,8,0,Yes,Yes,Wheat|Egg,Sweet Tooth,No,Available
+M040,Matcha Parfait,Dessert,Layered matcha dessert with ice cream,39000,460,7,55,18,0,Yes,Yes,Milk,Instagram Favorite,Yes,Available
+M041,Japanese Pudding,Dessert,Smooth caramel pudding,28000,250,7,28,11,0,Yes,Yes,Milk|Egg,Light Dessert,No,Available
+M042,Taiyaki,Dessert,Fish shaped cake with red bean filling,31000,340,6,48,10,0,Yes,Yes,Wheat|Egg,Traditional Dessert,No,Available
+M043,Matcha Latte,Beverage,Premium Japanese matcha latte,32000,180,7,20,6,0,Yes,Yes,Milk,Best Seller,Yes,Available
+M044,Hojicha Latte,Beverage,Roasted green tea latte,32000,170,7,18,6,0,Yes,Yes,Milk,Coffee Alternative,No,Available
+M045,Yuzu Soda,Beverage,Sparkling citrus drink,28000,120,0,30,0,0,Yes,Yes,None,Refreshing,No,Available
+M046,Hot Ocha,Beverage,Traditional hot green tea,18000,5,0,0,0,0,Yes,Yes,None,Healthy Choice,No,Available
+M047,Ramune,Beverage,Japanese marble soda,26000,150,0,37,0,0,Yes,Yes,None,Kids Favorite,No,Available
+M048,Calpis,Beverage,Japanese cultured milk drink,25000,130,2,28,2,0,Yes,Yes,Milk,Refreshing,No,Available
+M049,Iced Lemon Tea,Beverage,Fresh lemon black tea,22000,90,0,22,0,0,Yes,Yes,None,Refreshing,No,Available
+M050,Sakura Tea,Beverage,Cherry blossom infused tea,30000,40,0,8,0,0,Yes,Yes,None,Unique Experience,Yes,Available
+M051,Mineral Water,Beverage,Bottled mineral water,10000,0,0,0,0,0,Yes,Yes,None,Everyone,No,Available
+M052,Sparkling Water,Beverage,Imported sparkling mineral water,18000,0,0,0,0,0,Yes,Yes,None,Everyone,No,Available

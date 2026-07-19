@@ -1,0 +1,100 @@
+{
+  "restaurant": {
+    "name": "Sorain Kitchen",
+    "tagline": "Authentic Japanese Comfort Food",
+    "description": "Sorain Kitchen adalah restoran Jepang modern yang menyajikan beragam hidangan seperti ramen, sushi, donburi, yakiniku, teriyaki, side dish, dessert, dan minuman Jepang.",
+    "cuisine": "Japanese",
+    "concept": "Modern Japanese Dining",
+    "founded_year": 2024,
+    "city": "Bandung",
+    "country": "Indonesia",
+    "address": "Jl. Sakura No. 18, Bandung, Jawa Barat",
+    "phone": "+62 812-3456-7890",
+    "email": "hello@sorainkitchen.example",
+    "instagram": "@sorainkitchen",
+    "website": "https://sorainkitchen.example",
+    "currency": "IDR",
+    "timezone": "Asia/Jakarta"
+  },
+  "operating_hours": {
+    "monday": "10:00-22:00",
+    "tuesday": "10:00-22:00",
+    "wednesday": "10:00-22:00",
+    "thursday": "10:00-22:00",
+    "friday": "10:00-23:00",
+    "saturday": "10:00-23:00",
+    "sunday": "10:00-22:00",
+    "last_order_minutes_before_close": 30
+  },
+  "service": {
+    "dine_in": true,
+    "takeaway": true,
+    "delivery": true,
+    "reservation_available": true,
+    "private_room_available": false,
+    "capacity": 120,
+    "average_waiting_time_minutes": 15,
+    "payment_methods": [
+      "Cash",
+      "Debit Card",
+      "Credit Card",
+      "QRIS",
+      "E-Wallet"
+    ]
+  },
+  "dietary_information": {
+    "halal_friendly": true,
+    "pork_served": false,
+    "alcohol_served": false,
+    "vegetarian_options_available": true,
+    "vegan_options_available": true,
+    "allergen_notice": "Beberapa menu mengandung gandum, telur, susu, kedelai, ikan, wijen, atau shellfish. Pelanggan dengan alergi wajib mengonfirmasi kepada staf restoran."
+  },
+  "brand": {
+    "project_name": "SmartWaiter",
+    "ai_waiter_name": "Sora",
+    "logo_filename": "logo.png",
+    "favicon_filename": "favicon.png",
+    "primary_color": "#B22222",
+    "secondary_color": "#FFF8F0",
+    "accent_color": "#D4AF37",
+    "text_color": "#222222"
+  },
+  "ai_waiter": {
+    "name": "Sora",
+    "role": "AI Waiter",
+    "personality": [
+      "Friendly",
+      "Warm",
+      "Professional",
+      "Helpful",
+      "Patient",
+      "Honest"
+    ],
+    "supported_languages": [
+      "Indonesian",
+      "English"
+    ],
+    "responsibilities": [
+      "Explain restaurant menus",
+      "Recommend dishes based on preferences",
+      "Respect dietary restrictions and allergies",
+      "Recommend meals according to budget",
+      "Suggest food and beverage pairings",
+      "Provide restaurant information"
+    ],
+    "limitations": [
+      "Cannot place real orders",
+      "Cannot process payments",
+      "Cannot confirm reservations",
+      "Must not invent unavailable menu information",
+      "Must redirect allergy-critical decisions to restaurant staff"
+    ]
+  },
+  "data_sources": {
+    "menu_file": "data/menu.csv",
+    "system_prompt_file": "prompts/system_prompt.txt",
+    "restaurant_info_file": "data/restaurant_info.json"
+  },
+  "disclaimer": "Data restoran, alamat, kontak, harga, dan informasi nutrisi pada proyek ini bersifat dummy untuk kebutuhan pembelajaran dan demonstrasi."
+}
