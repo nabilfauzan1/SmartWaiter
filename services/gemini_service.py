@@ -53,7 +53,7 @@ def send_message(prompt: str) -> str:
 
     # Attempt configured model, then fallback models if model is deprecated or not found (404)
     models_to_try = [config.GEMINI_MODEL]
-    for fallback in ["gemini-flash-latest", "gemini-2.0-flash"]:
+    for fallback in ["gemini-2.0-flash-lite", "gemini-1.5-flash", "gemini-2.0-flash"]:
         if fallback not in models_to_try:
             models_to_try.append(fallback)
 

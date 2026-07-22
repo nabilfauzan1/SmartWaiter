@@ -6,15 +6,39 @@ All other modules must import settings from here, never from os.environ directly
 """
 
 import os
+
 from dotenv import load_dotenv
 
 # Load .env at import time so every module that imports config is covered.
 load_dotenv()
 
 
+def _get_setting(key: str, default: str = "") -> str:
+    """Retrieve configuration setting prioritizing Streamlit secrets (for public cloud deploy),
+
+    then environment variables (.env for local development), and finally default.
+    """
+    # 1. Check Streamlit Secrets (active when deployed on Streamlit Cloud)
+    try:
+        import streamlit as st
+        if key in st.secrets:
+            val = str(st.secrets[key]).strip()
+            if val:
+                return val
+    except Exception:
+        pass
+
+    # 2. Check local environment variables (.env)
+    val = os.getenv(key, "").strip()
+    if val:
+        return val
+
+    return default
+
+
 # ── Google Gemini ─────────────────────────────────────────────────────────────
-GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
-GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+GOOGLE_API_KEY: str = _get_setting("GOOGLE_API_KEY", "")
+GEMINI_MODEL: str = _get_setting("GEMINI_MODEL", "gemini-3.1-flash-lite")
 
 # ── File Paths ────────────────────────────────────────────────────────────────
 BASE_DIR: str = os.path.dirname(os.path.abspath(__file__))
