@@ -222,24 +222,9 @@ def _maybe_show_greeting() -> None:
 
 def _render_hero(restaurant_info: dict | None) -> None:
     """Render the landing hero section shown on empty-chat state."""
-    import os
-    logo_path = config.LOGO_PATH
-    logo_html = ""
-    if os.path.exists(logo_path):
-        import base64
-        with open(logo_path, "rb") as f:
-            logo_b64 = base64.b64encode(f.read()).decode()
-        logo_html = (
-            f'<div class="hero-logo-wrap">'
-            f'<img src="data:image/png;base64,{logo_b64}" '
-            f'style="width:100%;border-radius:16px;" alt="Sorain Kitchen"/>'
-            f'</div>'
-        )
-
     st.markdown(
-        f"""
+        """
         <div class="hero-section">
-            {logo_html}
             <h1 class="hero-headline">Irasshaimase!<br>Selamat Datang di Sorain Kitchen 🍵</h1>
             <p class="hero-sub">
                 Saya Sora, pelayan AI Anda hari ini. Saya siap membantu Anda
