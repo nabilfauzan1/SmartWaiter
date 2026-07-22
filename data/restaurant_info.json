@@ -1,4 +1,12 @@
 {
+  "creator": {
+    "name": "Muhammad Nabil Fauzan",
+    "short_name": "Nabil Fauzan",
+    "role": "Creator & AI Engineer",
+    "institution": "CCIT FTUI",
+    "institution_full": "Center for Computing and Information Technology - Fakultas Teknik Universitas Indonesia",
+    "bio": "Mahasiswa CCIT FTUI yang menciptakan dan mengembangkan sistem AI Waiter SmartWaiter (Sora) untuk Sorain Kitchen."
+  },
   "restaurant": {
     "name": "Sorain Kitchen",
     "tagline": "Authentic Japanese Comfort Food",

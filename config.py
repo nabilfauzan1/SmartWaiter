@@ -14,7 +14,7 @@ load_dotenv()
 
 # ── Google Gemini ─────────────────────────────────────────────────────────────
 GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
-GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
 
 # ── File Paths ────────────────────────────────────────────────────────────────
 BASE_DIR: str = os.path.dirname(os.path.abspath(__file__))
@@ -25,10 +25,10 @@ GREETING_PATH: str = os.path.join(BASE_DIR, "prompts", "greeting.txt")
 LOGO_PATH: str = os.path.join(BASE_DIR, "assets", "logo.png")
 
 # ── Brand Colors (fallback if JSON is unavailable) ───────────────────────────
-PRIMARY_COLOR: str = "#B22222"
-SECONDARY_COLOR: str = "#FFF8F0"
-ACCENT_COLOR: str = "#D4AF37"
-TEXT_COLOR: str = "#222222"
+PRIMARY_COLOR: str = "#C8102E"
+SECONDARY_COLOR: str = "#FAF6F0"
+ACCENT_COLOR: str = "#FF6B00"
+TEXT_COLOR: str = "#1E1E24"
 
 # ── Chat / Prompt Settings ────────────────────────────────────────────────────
 MAX_HISTORY_TURNS: int = 10          # Maximum number of past turns sent to Gemini

@@ -12,7 +12,7 @@ import pandas as pd
 
 from services.menu_service import load_menu
 from utils.formatter import format_price, normalize_allergen, spicy_label
-from utils.ui_helpers import inject_css
+from utils.ui_helpers import inject_css, render_theme_toggle
 
 st.set_page_config(
     page_title="Menu — Sorain Kitchen",
@@ -47,6 +47,7 @@ assert menu_df is not None  # satisfied by the error check above
 
 # ── Sidebar Filters ───────────────────────────────────────────────────────────
 with st.sidebar:
+    render_theme_toggle()
     st.markdown("## 🔍 Filter Menu")
     st.markdown("---")
 

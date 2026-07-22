@@ -37,29 +37,52 @@ def send_message(prompt: str) -> str:
     """
     try:
         client = _get_client()
-        response = client.models.generate_content(
-            model=config.GEMINI_MODEL,
-            contents=prompt,
-        )
-        text = response.text
-        if not text or not text.strip():
-            return (
-                "Mohon maaf, saya tidak dapat menjawab saat ini. "
-                "Silakan coba lagi dalam beberapa saat. 🙏\n\n"
-                "*(I'm sorry, I'm unable to respond right now. Please try again shortly.)*"
-            )
-        return text.strip()
-
-    except ValueError as exc:
-        # Missing API key
+    except ValueError:
         return (
             "⚠️ **API Key belum dikonfigurasi.**\n\n"
             "Silakan tambahkan `GOOGLE_API_KEY` pada file `.env` untuk mengaktifkan Sora.\n\n"
             "*(Please set your `GOOGLE_API_KEY` in the `.env` file.)*"
         )
     except Exception as exc:
-        error_str = str(exc).lower()
+        print(f"[Gemini Service Error]: {exc}")
+        return (
+            "Tidak dapat terhubung ke layanan AI. "
+            "Pastikan Anda terhubung ke internet. 🌐\n\n"
+            "*(Unable to connect to AI service. Please check your internet connection.)*"
+        )
 
+    # Attempt configured model, then fallback models if model is deprecated or not found (404)
+    models_to_try = [config.GEMINI_MODEL]
+    for fallback in ["gemini-flash-latest", "gemini-2.0-flash"]:
+        if fallback not in models_to_try:
+            models_to_try.append(fallback)
+
+    last_error = None
+    for model_name in models_to_try:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+            )
+            text = response.text
+            if not text or not text.strip():
+                return (
+                    "Mohon maaf, saya tidak dapat menjawab saat ini. "
+                    "Silakan coba lagi dalam beberapa saat. 🙏\n\n"
+                    "*(I'm sorry, I'm unable to respond right now. Please try again shortly.)*"
+                )
+            return text.strip()
+        except Exception as exc:
+            last_error = exc
+            print(f"[Gemini Service Error for model '{model_name}']: {exc}")
+            error_str = str(exc).lower()
+            if "404" in error_str or "not_found" in error_str or "no longer available" in error_str:
+                # Try next model candidate
+                continue
+            break
+
+    if last_error:
+        error_str = str(last_error).lower()
         if "quota" in error_str or "rate" in error_str or "429" in error_str:
             return (
                 "Maaf, layanan sedang sibuk. Mohon tunggu sebentar dan coba lagi. 🙏\n\n"
@@ -77,11 +100,11 @@ def send_message(prompt: str) -> str:
                 "Pastikan Anda terhubung ke internet. 🌐\n\n"
                 "*(Unable to connect to AI service. Please check your internet connection.)*"
             )
-        # Generic fallback — never expose the raw exception to the user
-        return (
-            "Mohon maaf, terjadi kendala teknis. Sora akan segera kembali! 🍵\n\n"
-            "*(Sorry, a technical issue occurred. Please try again.)*"
-        )
+
+    return (
+        "Mohon maaf, terjadi kendala teknis. Sora akan segera kembali! 🍵\n\n"
+        "*(Sorry, a technical issue occurred. Please try again.)*"
+    )
 
 
 def check_api_connection() -> tuple[bool, str]:
@@ -97,11 +120,18 @@ def check_api_connection() -> tuple[bool, str]:
         return False, "API key is placeholder"
     try:
         client = _get_client()
-        # Minimal probe — list models to check connectivity without burning tokens
         client.models.generate_content(
             model=config.GEMINI_MODEL,
             contents="Hi",
         )
         return True, "Connected"
     except Exception as exc:
-        return False, str(exc)[:80]
+        try:
+            client = _get_client()
+            client.models.generate_content(
+                model="gemini-flash-latest",
+                contents="Hi",
+            )
+            return True, "Connected (via fallback)"
+        except Exception as inner_exc:
+            return False, str(inner_exc)[:80]

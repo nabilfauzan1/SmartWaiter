@@ -29,7 +29,7 @@ from utils.formatter import (
     preference_summary,
     format_price,
 )
-from utils.ui_helpers import inject_css
+from utils.ui_helpers import inject_css, render_theme_toggle
 
 # ── Page Configuration ────────────────────────────────────────────────────────
 
@@ -80,23 +80,14 @@ def _load_data():
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 
 def _render_sidebar(restaurant_info: dict | None) -> None:
-    """Render the sidebar: logo, new chat, nav info, preferences, API status."""
+    """Render the sidebar: theme toggle, new chat, nav info, preferences, API status."""
     with st.sidebar:
-        # Logo — wrapped in a styled card container
-        logo_path = config.LOGO_PATH
-        if os.path.exists(logo_path):
-            st.markdown('<div class="sidebar-logo-card">', unsafe_allow_html=True)
-            st.image(logo_path, use_container_width=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        else:
-            st.markdown(
-                '<div class="sidebar-logo-card"><h3 style="color:#D4AF37;margin:0;">🍵 Sorain Kitchen</h3></div>',
-                unsafe_allow_html=True,
-            )
+        # Theme toggle (Light / Dark Mode)
+        render_theme_toggle()
 
         st.markdown("---")
 
-        # New Chat button — accent gold CTA
+        # New Chat button — accent orange CTA
         if st.button("✨ New Chat", key="new_chat_btn"):
             _reset_chat()
             st.rerun()

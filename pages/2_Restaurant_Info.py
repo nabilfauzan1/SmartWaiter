@@ -10,7 +10,7 @@ from __future__ import annotations
 import streamlit as st
 
 from utils.formatter import load_restaurant_info
-from utils.ui_helpers import inject_css
+from utils.ui_helpers import inject_css, render_theme_toggle
 
 st.set_page_config(
     page_title="Restaurant Info — Sorain Kitchen",
@@ -20,6 +20,9 @@ st.set_page_config(
 
 # ── CSS ────────────────────────────────────────────────────────────────────────────
 inject_css()
+
+with st.sidebar:
+    render_theme_toggle()
 
 # ── Load Data ─────────────────────────────────────────────────────────────────
 info, error = load_restaurant_info()
